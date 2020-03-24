@@ -23,4 +23,4 @@ done
 
 # run docker container sharing host's XServer
 
-docker run -it --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --volume=$WORK_DIR":/home/"$USER"/mnt" --env="DISPLAY" --net=host sintef_dev
+docker run -it --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --volume=$WORK_DIR":/home/"$USER"/mnt" --env="DISPLAY" --net=host jpmaree/optimization_engine:latest

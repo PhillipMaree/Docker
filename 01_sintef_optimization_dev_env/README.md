@@ -12,7 +12,7 @@ The following solvers have been included in the dockerfile image:
  #####Pull latest build docker image
  To pull a pre-build image, execute:
  
-    docker image pull jpmaree/sintef-digital:latest
+    docker image pull jpmaree/sintef-digital:optimization_dev_env
  
  #####Push latest build docker image (require privileges)
  Login to docker:
@@ -21,7 +21,7 @@ The following solvers have been included in the dockerfile image:
     
  Push latest build image
  
-    docker push jpmaree/sintef-digital:tagname
+    docker push jpmaree/optimization_engine:latest 
  
  #####Build docker image
  The build the image from scratch, call:
@@ -41,7 +41,7 @@ one can supply values to the following arguments:
   The docker container will share the host's XServer to display GUI (ie., matplotlib.pyplot visualization) in the 
   foreground of the host pc. The following command can be executed to run the docker container:
   
-    ./dokcker_run.sh [options] 
+    ./docker_run.sh [options] 
     
     Options:
     
