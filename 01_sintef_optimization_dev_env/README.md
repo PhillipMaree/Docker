@@ -1,6 +1,8 @@
-#### Integrated development environment for optimization
+#### Optimization framework for solving NLP/MINLP type of problems
 This project entails a dockerfile formulation that encapsulates various solvers (both open source and propriety software)
-to be used to solver optimization problems. The target application is to be able to formulate Model Predictive Control 
+to be used to solver optimization problems. 
+
+The target application is to be able to formulate Model Predictive Control 
 problem that can among other either be NLP, MINLP, MILP etc of nature.
 
 The following solvers have been included in the dockerfile image:
@@ -12,7 +14,7 @@ The following solvers have been included in the dockerfile image:
  #####Pull latest build docker image
  To pull a pre-build image, execute:
  
-    docker image pull jpmaree/sintef-digital:optimization_dev_env
+    docker image pull jpmaree/optimization_engine:latest 
  
  #####Push latest build docker image (require privileges)
  Login to docker:
