@@ -16,7 +16,7 @@ WORKDIR /scratch
 
 # install intellij
 
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y curl firefox
 
 WORKDIR /opt/idea
 
