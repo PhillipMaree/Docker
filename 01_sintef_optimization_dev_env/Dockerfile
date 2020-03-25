@@ -24,10 +24,8 @@ ENV CPLEX_LIB=/opt/Cplex/cplex/lib/x86-64_linux/static_pic/libcplex.a
 ENV BONMIN_INC_DIR=/opt/Bonmin/build/include/coin
 ENV BONMIN_LIB=/opt/Bonmin/build/lib/libbonmin.so
 
-# give the user root access
-
-RUN echo "$USER ALL = NOPASSWD: ALL" >> /etc/sudoers \
-   && apt-get update && apt-get install -y
+# update
+RUN apt-get update && apt-get install -y
 
 # append local lib in system path
 
