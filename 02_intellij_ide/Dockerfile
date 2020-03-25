@@ -23,12 +23,14 @@ WORKDIR /opt/idea
 RUN curl -fsSL $idea_source -o /opt/idea/installer.tgz \
   && tar --strip-components=1 -xzf installer.tgz
 
+# symbolic link for intellij
+
+RUN ln -s /opt/idea/bin/idea.sh /usr/bin/intellij
+
 # create user working directory
 
 RUN useradd -ms /bin/bash $USER_NAME
 USER $USER_NAME
-WORKDIR /home/$USER_NAME
 
-CMD [ "/opt/idea/bin/idea.sh" ]
-
-#docker build --rm -f Dockerfile --build-arg USER_NAME=$USER -t jpmaree/optimization_ide:latest .
+ARG workdir=/home/$USER_NAME
+WORKDIR $workdir
