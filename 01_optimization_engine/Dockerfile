@@ -46,6 +46,7 @@ RUN echo $TZ > /etc/timezone && \
 # install required packages
 
 RUN apt-get install -y \
+   sudo \
    wget \
    swig \
    git \

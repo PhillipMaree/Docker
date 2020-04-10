@@ -25,12 +25,11 @@ image is a Intellij-IDEA supported IDE where it is anticipated it is desirable t
   The docker container will share the host's XServer to display GUI (ie., matplotlib.pyplot visualization) in the 
   foreground of the host pc. The following command can be executed to run the docker container:
   
-    ./docker_run.sh [options] 
+    :/path_dev$ ./docker_run.sh [options] 
     
-    Options:
-    
-    -w <string:path> [work directory path to be mounted in countainer at /home/$USER/]
-    
+  where *path_dev$* denotes the project folder to be mounted for development 
+   
+   
 As default, the /mnt folder will be mounted if no options are specified 
 
  
