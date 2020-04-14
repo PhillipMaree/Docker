@@ -1,11 +1,18 @@
 #### Integrated development environment for optimization
 This project defines a IDE which is layered on top of the base image *jpmaree/optimization_engine:latest*. The resulting
-image is a Intellij-IDEA supported IDE where it is anticipated it is desirable to develop within a Python environment.
+image integrates the following development environments:
+
+    1. Intellij IDEA (mainly for python and java development)
+    2. Eclipse (mainly for c/c++ dev)
+    3. OpenModelica (modelling and simulation)
+    
+ 
+ is a Intellij-IDEA supported IDE where it is anticipated it is desirable to develop within a Python environment.
 
  #####Pull latest build docker image
  To pull a pre-build image, execute:
  
-    docker pull jpmaree/optimization_ide:latest
+    docker pull jpmaree/ide:latest
  
  #####Push latest build docker image (require privileges)
  Login to docker:
@@ -14,7 +21,7 @@ image is a Intellij-IDEA supported IDE where it is anticipated it is desirable t
     
  Push latest build image
  
-    docker push jpmaree/optimization_ide:latest 
+    docker push jpmaree/ide:latest 
  
  #####Build docker image
  The build the image from scratch, call:

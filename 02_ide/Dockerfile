@@ -4,11 +4,11 @@ MAINTAINER Phillip Maree <phillip.maree@sintef.no>
 
 ARG USER_NAME
 
-ARG IDEA_VERSION=2020.1
-ARG IDEA_BUILD=201.6487.11
+ARG IDEA_BUILD=2020.1
+ARG idea_source=https://download.jetbrains.com/idea/ideaIU-${IDEA_BUILD}.tar.gz
 
-ARG idea_source=https://download.jetbrains.com/idea/ideaIC-${IDEA_BUILD}.tar.gz
-ARG idea_local_dir=.IdeaIC${IDEA_VERSION}
+ARG ECLIPSE_BUILD=2020-03
+ARG eclipse_source=http://mirror.dkm.cz/eclipse/oomph/epp/${ECLIPSE_BUILD}/R/eclipse-inst-linux64.tar.gz
 
 RUN apt-get update && apt-get install -y \
     lsb-release \
@@ -18,14 +18,19 @@ RUN apt-get update && apt-get install -y \
 
 # install intellij
 
-WORKDIR /opt/idea
+WORKDIR /opt/Idea
 
-RUN curl -fsSL $idea_source -o /opt/idea/installer.tgz \
-  && tar --strip-components=1 -xzf installer.tgz
+RUN curl -fsSL $idea_source -o /opt/Idea/installer.tgz && \
+    tar --strip-components=1 -xzf installer.tgz && \
+    ln -s /opt/Idea/bin/idea.sh /usr/bin/intellij
 
-# symbolic link for intellij
+# install eclipse
 
-RUN ln -s /opt/idea/bin/idea.sh /usr/bin/intellij
+WORKDIR /opt/Eclipse
+
+RUN wget $eclipse_source -O installer.tar.gz && \
+    tar --strip-components=1 -xvzf installer.tar.gz && \
+    ln -s /opt/Eclipse/eclipse-inst /usr/bin/eclipse-inst
 
 # install openmodelica
 
