@@ -4,11 +4,17 @@ MAINTAINER Phillip Maree <phillip.maree@sintef.no>
 
 ARG USER_NAME
 
+# intellij IDEA repo mirror
+
 ARG IDEA_BUILD=2020.1
 ARG idea_source=https://download.jetbrains.com/idea/ideaIU-${IDEA_BUILD}.tar.gz
 
-ARG ECLIPSE_BUILD=2020-03
-ARG eclipse_source=http://mirror.dkm.cz/eclipse/oomph/epp/${ECLIPSE_BUILD}/R/eclipse-inst-linux64.tar.gz
+# eclipse repo mirror
+
+ARG ECLIPSE_VERSION=2020-03
+ARG eclipse_source=http://mirrors.uniri.hr/eclipse//technology/epp/downloads/release/${ECLIPSE_VERSION}/R/eclipse-cpp-${ECLIPSE_VERSION}-R-incubation-linux-gtk-x86_64.tar.gz
+
+# generic packages
 
 RUN apt-get update && apt-get install -y \
     lsb-release \
@@ -20,7 +26,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /opt/Idea
 
-RUN curl -fsSL $idea_source -o /opt/Idea/installer.tgz && \
+RUN curl -fsSL $idea_source -o installer.tgz && \
     tar --strip-components=1 -xzf installer.tgz && \
     ln -s /opt/Idea/bin/idea.sh /usr/bin/intellij
 
@@ -30,7 +36,7 @@ WORKDIR /opt/Eclipse
 
 RUN wget $eclipse_source -O installer.tar.gz && \
     tar --strip-components=1 -xvzf installer.tar.gz && \
-    ln -s /opt/Eclipse/eclipse-inst /usr/bin/eclipse-inst
+    ln -s /opt/Eclipse/eclipse /usr/bin/eclipse
 
 # install openmodelica
 
