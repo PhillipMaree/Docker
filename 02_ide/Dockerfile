@@ -20,7 +20,8 @@ RUN apt-get update && apt-get install -y \
     lsb-release \
     curl \
     chromium-browser \
-    screen
+    screen \
+    libboost-all-dev
 
 # install intellij
 
