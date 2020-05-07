@@ -20,8 +20,7 @@ RUN apt-get update && apt-get install -y \
     lsb-release \
     curl \
     chromium-browser \
-    screen \
-    libboost-all-dev
+    screen
 
 # install intellij
 
@@ -46,13 +45,18 @@ RUN for deb in deb deb-src; do echo "$deb http://build.openmodelica.org/apt `lsb
     apt-get update && sudo apt upgrade -y && \
     apt-get install openmodelica -y
 
+# install gnuplot iostream interface
+
+WORKDIR /opt/Matplot
+
+RUN git clone https://github.com/lava/matplotlib-cpp.git ./ && make && cp ./matplotlibcpp.h /usr/include/
+
 # create user working directory
 
 RUN useradd -m -d /home/${USER_NAME} ${USER_NAME} && \
     chown -R ${USER_NAME} /home/${USER_NAME} && \
     adduser ${USER_NAME} sudo && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
 
 USER $USER_NAME
 ARG workdir=/home/$USER_NAME
